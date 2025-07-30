@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sree’s Smart Tools</title>
+
+  <!-- Bootstrap & Google Font -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Prompt', sans-serif;
+      background: radial-gradient(circle, #0f2027, #203a43, #2c5364);
+      color: #f8f9fa;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .tool-card {
+      background: #ffffff12;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      margin-bottom: 30px;
+      transition: transform 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: scale(1.02);
+    }
+
+    .btn-sree {
+      background-color: #20c997;
+      border: none;
+      color: #fff;
+      border-radius: 10px;
+      padding: 10px 20px;
+    }
+
+    .btn-sree:hover {
+      background-color: #17a085;
+    }
+
+    .output {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>✨ Sree's Smart Tools</h1>
+
+    <div class="tool-card">
+      <h3>🔢 Fibonacci Generator</h3>
+      <input type="number" id="fibonacciInput" class="form-control" placeholder="Enter a number">
+      <button class="btn btn-sree mt-2" onclick="generateFibonacci()">Generate</button>
+      <div id="fibonacciOutput" class="output"></div>
+    </div>
+
+    <div class="tool-card">
+      <h3>🔁 Palindrome Checker</h3>
+      <input type="text" id="palindromeInput" class="form-control" placeholder="Enter text">
+      <button class="btn btn-sree mt-2" onclick="checkPalindrome()">Check</button>
+      <div id="palindromeOutput" class="output"></div>
+    </div>
+
+    <div class="tool-card">
+      <h3>🧮 Factorial Calculator</h3>
+      <input type="number" id="factorialInput" class="form-control" placeholder="Enter a number">
+      <button class="btn btn-sree mt-2" onclick="calculateFactorial()">Calculate</button>
+      <div id="factorialOutput" class="output"></div>
+    </div>
+
+    <div class="nav-buttons">
+      <a href="/about" class="btn btn-sree">About</a>
+      <a href="/collections" class="btn btn-sree">Collections</a>
+      <a href="/junit" class="btn btn-sree">JUnit</a>
+    </div>
+  </div>
+
+  <script>
+    function generateFibonacci() {
+      const n = parseInt(document.getElementById('fibonacciInput').value);
+      if (isNaN(n) || n < 0) {
+        document.getElementById('fibonacciOutput').innerText = "Enter a non-negative number.";
+        return;
+      }
+
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      const result = n === 0 ? [] : (n === 1 ? [0] : fib.slice(0, n));
+      document.getElementById('fibonacciOutput').innerText = "Series: " + result.join(', ');
+    }
+
+    function checkPalindrome() {
+      const str = document.getElementById('palindromeInput').value.trim();
+      const cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+      const isPalindrome = cleanStr === cleanStr.split('').reverse().join('');
+      document.getElementById('palindromeOutput').innerText = isPalindrome ? "It's a Palindrome!" : "Nope, not a Palindrome.";
+    }
+
+    function calculateFactorial() {
+      const num = parseInt(document.getElementById('factorialInput').value);
+      if (isNaN(num) || num < 0) {
+        document.getElementById('factorialOutput').innerText = "Enter a non-negative number.";
+        return;
+      }
+      let factorial = 1;
+      for (let i = 2; i <= num; i++) {
+        factorial *= i;
+      }
+      document.getElementById('factorialOutput').innerText = `Factorial of ${num} is ${factorial}`;
+    }
+  </script>
+
+</body>
+</html>
