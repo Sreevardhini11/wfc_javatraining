@@ -1,0 +1,14 @@
+{
+  "name": "demoapp",
+  "version": "1.0.0",
+  "description": "A demo Node.js application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "Sree Vardhini",
+  "license": "ISC",
+  "dependencies": {}
+}
